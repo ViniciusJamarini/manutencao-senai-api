@@ -10,7 +10,7 @@ import lombok.ToString;
 
 @Data 
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Component
 public class Tecnico {
 	

@@ -28,14 +28,12 @@ public class InitApp {
 			System.out.println("Deu certo");
 			tecnico.getNome();
 			tecnico.setId(1);
-			
 			outroTecnico.setId(1);
 			System.out.println(tecnico);
 			System.out.println(outroTecnico);
 			if(tecnico.equals(outroTecnico)) {
 				System.out.println("Sao os mesmos");
 			}
-			
 		};
 	}
 
