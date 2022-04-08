@@ -32,12 +32,14 @@ public class InitApp {
 				LocalDate dataDeAdmissao = LocalDate.of(2022, 4, 7);
 				novoTecnico.setDataDeAdmissao(dataDeAdmissao);
 				this.service.inserir(novoTecnico);*/
-				Tecnico tecnicoSalvo = new Tecnico();
-				tecnicoSalvo.setId(1);
-				tecnicoSalvo.setNomeCompleto("Joanecleidson");
-				tecnicoSalvo.setDataDeAdmissao(LocalDate.now());
-				this.service.alterar(tecnicoSalvo);
-				System.out.println("Técnico salvo com sucesso");
+//				Tecnico tecnicoSalvo = new Tecnico();
+//				tecnicoSalvo.setId(1);
+//				tecnicoSalvo.setNomeCompleto("Joanecleidson");
+//				tecnicoSalvo.setDataDeAdmissao(LocalDate.now());
+//				this.service.alterar(tecnicoSalvo);
+//				System.out.println("Técnico salvo com sucesso");
+				this.service.listarPor("Jose");
+				this.service.removerPor(0);
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
