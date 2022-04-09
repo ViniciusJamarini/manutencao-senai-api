@@ -22,14 +22,20 @@ public class ClienteService {
 	
 	final int IDADE_MINIMA = 12;
 
-	public Cliente inserir(@Valid Cliente novoCliente) {
+	public Cliente inserir(
+			@Valid
+			@NotNull(message = "O cliente nao pode ser nulo")
+			Cliente novoCliente) {
 		this.validarIdadeDo(novoCliente);
 		Cliente clienteSalvo = novoCliente;
 		return clienteSalvo;
 
 	}
 	
-	public Cliente alterar(@Valid Cliente clienteSalvo) {
+	public Cliente alterar(
+			@Valid 
+			@NotNull(message = "O cliente nao pode ser nulo")
+			Cliente clienteSalvo) {
 		this.validarIdadeDo(clienteSalvo);
 		Cliente clienteAtualizado = clienteSalvo;
 		return clienteAtualizado;
