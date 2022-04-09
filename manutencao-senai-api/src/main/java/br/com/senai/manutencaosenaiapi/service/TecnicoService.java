@@ -20,26 +20,40 @@ import br.com.senai.manutencaosenaiapi.entity.Tecnico;
 @Validated
 public class TecnicoService {
 
-	public Tecnico inserir(@Valid @NotNull(message = "O técnico não pode ser nulo") Tecnico novoTecnico) {
-		Preconditions.checkArgument(novoTecnico.isNovo(), "O técnico já foi salvo");
-		Tecnico tecnicoSalvo = novoTecnico;
-		return tecnicoSalvo;
-	}
 
-	public Tecnico alterar(@Valid @NotNull(message = "O técnico não pode ser nulo") Tecnico tecnicoSalvo) {
-		Preconditions.checkArgument(!tecnicoSalvo.isNovo(), "O técnico ainda não foi inserido");
-		Tecnico tecnicoAtualizado = tecnicoSalvo;
-		return tecnicoAtualizado;
-	}
 
 	public List<Tecnico> listarPor(
 			@NotEmpty(message = "o nome nao pode ser nulo") @NotBlank(message = "Nao pode haver esço antes do nome") String nome) {
 		return new ArrayList<Tecnico>();
 	}
 
-	public void removerPor(
-			@NotNull(message = "O id nao pode ser nulo") @Min(value = 1, message = "O id deve ser maior que 0") Integer id) {
+
+	public Tecnico inserir(
+			@Valid
+			@NotNull(message = "O técnico não pode ser nulo")
+			Tecnico novoTecnico) {			
+		Preconditions.checkArgument(novoTecnico.isNovo(),
+				"O técnico já foi salvo");
+		Tecnico tecnicoSalvo = novoTecnico;	
+		return tecnicoSalvo;				
 
 	}
-
+	
+	public Tecnico alterar(
+			@Valid
+			@NotNull(message = "O técnico não pode ser nulo")
+			Tecnico tecnicoSalvo) {
+		Preconditions.checkArgument(!tecnicoSalvo.isNovo(), 
+				"O técnico ainda não foi inserido");
+		Tecnico tecnicoAtualizado = tecnicoSalvo;
+		return tecnicoAtualizado;
+	}
+	
+	public void removerPor(
+			@NotNull(message = "O id para remoção não pode ser nulo")
+			@Min(value = 1, message = "O id deve ser maior que zero")
+			Integer id) {
+		
+	}
+	
 }

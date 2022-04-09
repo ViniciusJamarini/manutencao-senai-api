@@ -26,6 +26,7 @@ public class InitApp {
 	@Autowired
 	private TecnicoService service;
 	
+
 	@Autowired
 	private ClienteService clienteService;
 	
@@ -38,6 +39,7 @@ public class InitApp {
 				LocalDate dataDeAdmissao = LocalDate.of(2022, 4, 7);
 				novoTecnico.setDataDeAdmissao(dataDeAdmissao);
 				this.service.inserir(novoTecnico);*/
+
 //				Tecnico tecnicoSalvo = new Tecnico();
 //				tecnicoSalvo.setId(1);
 //				tecnicoSalvo.setNomeCompleto("Joanecleidson");
@@ -56,6 +58,14 @@ public class InitApp {
 				this.clienteService.inserir(novoCliente);
 				System.out.println("Cliente salvo");
 				
+
+				Tecnico tecnicoSalvo = new Tecnico();
+				tecnicoSalvo.setId(1);
+				tecnicoSalvo.setNomeCompleto("Joanecleidson");
+				tecnicoSalvo.setDataDeAdmissao(LocalDate.now());
+				this.service.alterar(tecnicoSalvo);
+				System.out.println("Técnico salvo com sucesso");
+
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
