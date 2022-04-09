@@ -34,6 +34,7 @@ public class ClienteService {
 	
 	public Cliente alterar(
 			@Valid 
+			@NotNull(message = "O cliente nao pode ser nulo ")
 			@NotNull(message = "O cliente nao pode ser nulo")
 			Cliente clienteSalvo) {
 		this.validarIdadeDo(clienteSalvo);
