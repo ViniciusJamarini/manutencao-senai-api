@@ -10,9 +10,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import br.com.senai.manutencaosenaiapi.entity.Cliente;
+import br.com.senai.manutencaosenaiapi.entity.Peca;
 import br.com.senai.manutencaosenaiapi.entity.Tecnico;
 import br.com.senai.manutencaosenaiapi.enums.Sexo;
 import br.com.senai.manutencaosenaiapi.service.ClienteService;
+import br.com.senai.manutencaosenaiapi.service.PecaService;
 import br.com.senai.manutencaosenaiapi.service.TecnicoService;
 
 @SpringBootApplication
@@ -25,10 +27,12 @@ public class InitApp {
 	
 	@Autowired
 	private TecnicoService service;
-	
 
 	@Autowired
 	private ClienteService clienteService;
+
+	@Autowired
+	private PecaService pecaService;
 	
 	@Bean	
 	public CommandLineRunner commandLineRunner(ApplicationContext ac) {
@@ -48,24 +52,27 @@ public class InitApp {
 //				System.out.println("Técnico salvo com sucesso");
 //				this.service.listarPor("Jose");
 //				this.service.removerPor(0);
-				Cliente novoCliente = new Cliente();
-				novoCliente.setNome("Jao");
-				novoCliente.setSobrenome("da Silva");
-				novoCliente.setCpf("000.999.876-67");
-				novoCliente.setSexo(Sexo.MASCULINO);
-				novoCliente.setEndereco("Rua das colves");
-				novoCliente.setDataDeNascimento(LocalDate.of(1983, 9, 14));
-				this.clienteService.inserir(novoCliente);
-				System.out.println("Cliente salvo");
-				
-
-				Tecnico tecnicoSalvo = new Tecnico();
-				tecnicoSalvo.setId(1);
-				tecnicoSalvo.setNomeCompleto("Joanecleidson");
-				tecnicoSalvo.setDataDeAdmissao(LocalDate.now());
-				this.service.alterar(tecnicoSalvo);
-				System.out.println("Técnico salvo com sucesso");
-
+//				Cliente novoCliente = new Cliente();
+//				novoCliente.setNome("Jao");
+//				novoCliente.setSobrenome("da Silva");
+//				novoCliente.setCpf("000.999.876-67");
+//				novoCliente.setSexo(Sexo.MASCULINO);
+//				novoCliente.setEndereco("Rua das colves");
+//				novoCliente.setDataDeNascimento(LocalDate.of(1983, 9, 14));
+//				this.clienteService.inserir(novoCliente);
+//				System.out.println("Cliente salvo");
+//				Tecnico tecnicoSalvo = new Tecnico();
+//				tecnicoSalvo.setId(1);
+//				tecnicoSalvo.setNomeCompleto("Joanecleidson");
+//				tecnicoSalvo.setDataDeAdmissao(LocalDate.now());
+//				this.service.alterar(tecnicoSalvo);
+//				System.out.println("Técnico salvo com sucesso");
+				Peca novaPeca = new Peca();
+				novaPeca.setDescricao("teclado");
+				novaPeca.setQtdeEmEstoque(10);
+				System.out.println(novaPeca);
+				this.pecaService.inserir(null);
+				System.out.println("Peça inserida com sucesso");
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
