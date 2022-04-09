@@ -27,7 +27,7 @@ public class Cliente {
 	private String sobrenome;
 	
 	@NotEmpty(message = "O cpf nao pode ser nulo")
-	@Pattern(regexp = "NNN.NNN.NNN-NN")
+	@Pattern(regexp ="(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)", message = "O formato deve ser NNN.NNN.NNN-NN")
 	private String cpf;
 	
 	@NotNull(message = "O sexo é obrigario")
