@@ -17,14 +17,16 @@ import br.com.senai.manutencaosenaiapi.entity.Peca;
 @Validated
 public class PecaService {
 
-	public Peca inserir(@Valid @NotNull(message = "A peca nao pode ser nula") Peca novaPeca) {
-
+	public Peca inserir(
+			@Valid
+			@NotNull(message = "A peca nao pode ser nula") Peca novaPeca) {
 		Peca pecaSalva = novaPeca;
 		return pecaSalva;
 
 	}
 
-	public Peca alterar(@Valid Peca pecaSalva1) {
+	public Peca alterar(
+		@Valid Peca pecaSalva1) {
 		@NotNull(message = "A peca  nao pode ser nula")
 		Peca pecaAtualizada = pecaSalva1;
 		return pecaAtualizada;
@@ -32,7 +34,8 @@ public class PecaService {
 	}
 
 	public List<Peca> listarPor(
-			@NotEmpty(message = "A descricao nao pode ser vazia") @NotBlank(message = "A descricao nao pode conter espaços em branco antes da primeira letra") String descricao) {
+			@NotEmpty(message = "A descricao nao pode ser vazia") 
+			@NotBlank(message = "A descricao nao pode conter espaços em branco antes da primeira letra") String descricao) {
 
 		return new ArrayList<Peca>();
 	}
