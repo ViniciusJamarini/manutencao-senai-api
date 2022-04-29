@@ -12,23 +12,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import br.com.senai.manutencaosenaiapi.entity.Peca;
+import br.com.senai.manutencaosenaiapi.repository.PecasRepository;
 
 @Service
 @Validated
 public class PecaService {
 
+	private PecasRepository repository;
+		
+	
+	
 	public Peca inserir(
 			@Valid
 			@NotNull(message = "A peca nao pode ser nula") Peca novaPeca) {
-		Peca pecaSalva = novaPeca;
+		Peca pecaSalva = repository.save(novaPeca);
 		return pecaSalva;
 
 	}
 
 	public Peca alterar(
-		@Valid Peca pecaSalva1) {
+		@Valid Peca pecaSalva) {
 		@NotNull(message = "A peca  nao pode ser nula")
-		Peca pecaAtualizada = pecaSalva1;
+		Peca pecaAtualizada = repository.save( pecaSalva);
 		return pecaAtualizada;
 
 	}
