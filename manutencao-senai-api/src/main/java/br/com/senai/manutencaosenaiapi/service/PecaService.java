@@ -1,9 +1,9 @@
 package br.com.senai.manutencaosenaiapi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -19,9 +19,7 @@ import br.com.senai.manutencaosenaiapi.repository.PecasRepository;
 public class PecaService {
 
 	private PecasRepository repository;
-		
-	
-	
+
 	public Peca inserir(
 			@Valid
 			@NotNull(message = "A peca nao pode ser nula") Peca novaPeca) {
@@ -30,19 +28,28 @@ public class PecaService {
 
 	}
 
-	public Peca alterar(
-		@Valid Peca pecaSalva) {
+	public Peca alterar(@Valid Peca pecaSalva) {
 		@NotNull(message = "A peca  nao pode ser nula")
-		Peca pecaAtualizada = repository.save( pecaSalva);
+		Peca pecaAtualizada = repository.save(pecaSalva);
 		return pecaAtualizada;
 
 	}
 
-	public List<Peca> listarPor(
-			@NotEmpty(message = "A descricao nao pode ser vazia") 
-			@NotBlank(message = "A descricao nao pode conter espaços em branco antes da primeira letra") String descricao) {
+	public void removerPor(
+			@NotNull(message = "id nao podeser nulo")
+			@Min(value = 1, message = "o id da peca deve ser maior que 0") 
+			Integer id) {
 
-		return new ArrayList<Peca>();
+		this.repository.deleteById(id);
+
+	}
+
+	public List<Peca> listarPor(
+			@NotEmpty(message = "A descricao nao pode ser vazia")
+			@NotBlank(message = "A descricao nao pode conter espaços em branco antes da primeira letra")
+			String descricao) {
+
+		return repository.listarPor("%" + descricao + "%");
 	}
 
 }
