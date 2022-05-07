@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,6 +19,7 @@ import br.com.senai.manutencaosenaiapi.repository.PecasRepository;
 @Validated
 public class PecaService {
 
+	@Autowired
 	private PecasRepository repository;
 
 	public Peca inserir(

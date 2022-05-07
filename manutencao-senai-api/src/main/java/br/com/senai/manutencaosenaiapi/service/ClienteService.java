@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -23,6 +24,7 @@ public class ClienteService {
 	
 	final int IDADE_MINIMA = 12;
 	
+	@Autowired
 	private ClientesRepository repository;
 
 	public Cliente inserir(
@@ -49,7 +51,7 @@ public class ClienteService {
 			@NotEmpty(message = "O nome é obrigatorio")
 			@NotBlank(message = "O nome para busca nao deve conter espaço e branco antes da letra")		
 			String nome){
-		return repository.listarPor(nome);
+		return repository.listarPor("%" +nome + "%");
 				
 	}
 	
